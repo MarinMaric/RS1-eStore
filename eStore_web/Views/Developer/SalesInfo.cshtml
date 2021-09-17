@@ -1,0 +1,50 @@
+﻿@using eStore_web.ViewModel;
+@model List<ProdajaDetaljiVM>
+@{
+    var filterVM = (SalesFilterVM)TempData["vm"];
+    var igraID = (int)TempData["igraID"];
+    var naziv = (string)ViewData["naziv"];
+}
+<br />
+<br />
+<br />
+
+<h1>Prodaje za: </h1>
+<br />
+<form asp-action="SalesInfo" asp-controller="Developer" method="post">
+    <input hidden name="igraID" type="number" value="@igraID" />
+    <label>Datum (od-do)</label>
+    <input type="date" name="DatumOd" value="@filterVM.DatumOd" />
+    <input type="date" name="DatumDo" value="@filterVM.DatumOd" />
+    <br />
+    <label>Država</label>
+    <input type="text" name="Drzava" value="@filterVM.Drzava" />
+    <br />
+    <input type="submit" value="Filter" />
+</form>
+<br />
+<br />
+@Html.ActionLink("Izvještaj PDF", "SpecificReport", "Report", new { type = "pdf", NazivIgre = naziv, DatumOd = filterVM.DatumOd, DatumDo = filterVM.DatumDo, BrojKopijaOd = filterVM.BrojKopijaOd, BrojKopijaDo = filterVM.BrojKopijaDo, Drzava = filterVM.Drzava }) | @Html.ActionLink("Izvještaj Excel", "SpecificReport", "Report", new { type = "excel", NazivIgre = naziv, DatumOd = filterVM.DatumOd, DatumDo = filterVM.DatumDo, BrojKopijaOd = filterVM.BrojKopijaOd, BrojKopijaDo = filterVM.BrojKopijaDo, Drzava = filterVM.Drzava })
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Drzava</th>
+            <th>Cijena</th>
+            <th>Popust</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ProdajaDetaljiVM p in Model)
+        {
+            <tr>
+                <td>@p.VrijemeKupovine</td>
+                <td>@p.Drzava</td>
+                <td>@p.Cijena </td>
+                <td>@p.Popust </td>
+            </tr>
+        }
+    </tbody>
+</table>

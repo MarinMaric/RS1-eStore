@@ -1,0 +1,24 @@
+﻿@using eStore_web.ViewModel;
+@model SalesFilterVM
+
+<br />
+<br />
+<br />
+
+<form ajax-poziv="da" action="/Developer/SalesGeneral" ajax-rezultat="ajaxDiv" method="post">
+    @Html.LabelFor(x => x.NazivIgre)
+    @Html.EditorFor(x => x.NazivIgre)
+    <br />
+    @Html.LabelFor(x => x.DatumOd, "Datum (od-do)")
+    @Html.EditorFor(x => x.DatumOd)
+    @Html.EditorFor(x => x.DatumDo)
+    <br />
+    @Html.LabelFor(x => x.Drzava)
+    @Html.EditorFor(x => x.Drzava)
+    <br />
+    <input type="submit" value="Filter" />
+</form>
+<br />
+<br />
+
+<div id="ajaxDiv"></div>

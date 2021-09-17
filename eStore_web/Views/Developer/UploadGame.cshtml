@@ -1,0 +1,117 @@
+﻿@using System
+@using eStore_web.ViewModel;
+@model UploadGameVM
+@{
+    int devID = (int)ViewData["dev"];
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/pocetna.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<style>
+    .mGamePicture {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        margin: 15px;
+    }
+
+        .mGamePicture img {
+            position: relative;
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border: 1px solid #393939;
+        }
+
+    label.error {
+        color: red;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .btn1 {
+        position: absolute;
+        top: 0px;
+        right: 15px;
+        z-index: 1;
+    }
+
+    .mInput {
+        margin: auto;
+        width: 300px;
+        padding: 10px;
+        background-color: #eee;
+        border: 2px solid #939393;
+        overflow: hidden;
+    }
+</style>
+<br />
+<br />
+<br />
+
+<form class="form-horizontal" method="post" action="/Developer/RequestPublish">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Zahtjev za izdavanje igre</legend>
+        <input id="devId" name="devID" type="text" value="@devID" hidden>
+
+        <div class="form-group">
+            <label asp-for="@Model.Naziv" class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <input id="naziv" asp-for="@Model.Naziv" placeholder="" class="form-control">
+                <span asp-validation-for="@Model.Naziv" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" asp-for="@Model.Opis"></label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="opis" asp-for="@Model.Opis"></textarea>
+                <span asp-validation-for="@Model.Opis" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Žanr</label>
+            <div class="col-md-4">
+                <select id="Genre" asp-for="@Model.ZanrValue" asp-items="@Model.Zanr" class="form-control"></select>
+                <span asp-validation-for="@Model.ZanrValue" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Rating</label>
+            <div class="col-md-4">
+                <select id="Rating" asp-for="@Model.RatingValue" asp-items="@Model.Rating" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" asp-for="@Model.Link">Link Igre</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="igra" asp-for="@Model.Link"></textarea>
+                <span asp-validation-for="@Model.Link" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" asp-for="@Model.TrailerUrl">Trailer Link</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="trailer" asp-for="@Model.TrailerUrl"></textarea>
+                <span asp-validation-for="@Model.TrailerUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" asp-for="@Model.Cijena">Cijena</label>
+            <div class="col-md-4">
+                <input asp-for="@Model.Cijena" class="form-control" id="cijena" />
+                <span asp-validation-for="@Model.Cijena" class="text-danger"></span>
+            </div>
+        </div>
+    </fieldset>
+
+    <input type="submit" value="Pošalji" />
+</form>

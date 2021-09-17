@@ -1,0 +1,17 @@
+﻿@using eStore_web.EF_Models;
+@{
+    string username = (string)ViewData["username"];
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/pocetna.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<br />
+<br />
+<br />
+
+<p>Dobro došli, @username</p>
+
+@Html.ActionLink("Objavi igru", "UploadGame", "Developer", new { }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Moje igre", "ViewGames", "Developer", new { }, new { @class = "btn btn-danger" })
+@Html.ActionLink("Prodaje", "Sales", "Developer", new { }, new { @class = "btn btn-default" })

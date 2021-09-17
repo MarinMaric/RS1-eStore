@@ -1,0 +1,62 @@
+﻿@using System;
+@using eStore_web.EF_Models;
+
+@{
+    List<Igra> igre = (List<Igra>)ViewData["listaIgara"];
+    int devID = (int)ViewData["dev"];
+}
+
+<h1>Pregled igara</h1>
+@Html.ActionLink("Objavi igru", "UploadGame", "Developer", new { }, new { @class = "btn btn-primary" })
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Cijena</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Igra i in igre)
+        {
+            if (i.DeveloperID == devID && i.Odobrena==true)
+            {
+        <tr>
+            <td>@i.Naziv</td>
+            <td>@i.Cijena</td>
+            <td>
+                <a href="ViewGameDetails?igraID=@i.IgraID" class="btn btn-default">Detalji</a>
+                <a href="EditGame?igraID=@i.IgraID" class="btn btn-danger">Uredi</a>
+                <a href="DeleteGame?igraID=@i.IgraID" class="btn btn-danger">Izbrisi</a>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h1>Zahtjevi za upload</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Igra i in igre)
+        {
+            if (i.DeveloperID == devID && i.Odobrena==false)
+            {
+        <tr>
+            <td>@i.Naziv</td>
+            <td>
+                <a href="ViewGameDetails?igraID=@i.IgraID" class="btn btn-default">Detalji</a>
+                <a href="DeleteGame?igraID=@i.IgraID" class="btn btn-danger">Izbrisi</a>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@using eStore_web.ViewModel;
+@model List<PopustRecordVM>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Datum početka</th>
+            <th>Datum kraja</th>
+            <th>Postotak</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PopustRecordVM vm in Model)
+        {
+            <tr>
+                <td>@vm.DatumPocetka</td>
+                <td>@vm.DatumKraj</td>
+                <td>@vm.Postotak</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@using System;
+@using eStore_web.EF_Models;
+
+@{
+    Igra i = (Igra)ViewData["igra"];
+    string url = new string("/Developer/DiscountHistory?igraID=@i.IgraID");
+}
+
+<h1>@i.Naziv</h1>
+<br />
+<br />
+@{
+    if (i.IgricaImage != null)
+    {
+        var base64 = Convert.ToBase64String(i.IgricaImage.Image);
+        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+
+        <img class="card-img-top" src="@imgsrc" alt="Card image cap">
+    }
+}
+
+<p><b>Opis: </b> @i.Opis</p>
+<p><b>Žanr: </b> @i.GameGenre.NazivZanra</p>
+<p><b>Cijena: </b> @i.Cijena</p>
+<p><b>Datum Objave: </b> @i.DatumObjave</p>
+<p><b>Odobrena: </b> @i.Odobrena</p>
+@if (i.Odobrena == true)
+{
+    <p><b>Premium Status: </b> @i.PremiumStatus</p>
+}
+@if (i.RatingCategorie != null)
+{
+    <p><b>Rating: </b> @i.RatingCategorie.OznakaKategorije</p>
+}
+
+@if (i.Odobrena == true)
+{
+    <a href="EditGame?igraID=@i.IgraID" class="btn btn-info">Uredi</a>
+    <a href="PutOnSale?igraID=@i.IgraID" class="btn btn-info">Stvori popust</a>
+
+
+<form ajax-poziv='da' ajax-url="@url" action="@url" ajax-rezultat="ajaxDiv">
+    <input name="igraID" value="@i.IgraID" type="hidden"/>
+    <label>Datum početka:</label>
+    <input type="date" name="pocetakOd" />
+    <input type="date" name="pocetakDo" />
+    <br />
+    <label>Datum kraja:</label>
+    <input type="date" name="krajOd" />
+    <input type="date" name="krajDo" />
+    <br />
+    <input type="submit" value="Povjest popusta" class="btn btn-primary" />
+</form>
+}
+<div id="ajaxDiv">
+
+</div>

@@ -1,0 +1,16 @@
+﻿@using System;
+@using eStore_web.EF_Models;
+
+@{
+    Developer dev = (Developer)ViewData["dev"];
+}
+
+<h1>Pregled profila</h1>
+
+<h2>Developer info</h2>
+
+<p><b>Naziv: </b> @dev.NazivKompanije</p>
+<p><b>Datum utemeljenja: </b> @dev.DatumUtemeljenja</p>
+<p><b>Email adresa: </b> @dev.AccountBase.EmailAddress</p>
+
+<a href="EditProfile">Uredi profil</a>

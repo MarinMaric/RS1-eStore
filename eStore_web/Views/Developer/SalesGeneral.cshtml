@@ -1,0 +1,31 @@
+﻿@using eStore_web.ViewModel
+@model List<ProdajaVM>
+@{
+    var filterVM = (SalesFilterVM)TempData["vm"];
+}
+<br />
+@Html.ActionLink("Izvještaj PDF", "GeneralReport", "Report", new { type = "pdf", NazivIgre = filterVM.NazivIgre, DatumOd = filterVM.DatumOd, DatumDo = filterVM.DatumDo, BrojKopijaOd = filterVM.BrojKopijaOd, BrojKopijaDo = filterVM.BrojKopijaDo, Drzava = filterVM.Drzava }) | @Html.ActionLink("Izvještaj Excel", "GeneralReport", "Report", new { type = "excel", NazivIgre = filterVM.NazivIgre, DatumOd = filterVM.DatumOd, DatumDo = filterVM.DatumDo, BrojKopijaOd = filterVM.BrojKopijaOd, BrojKopijaDo = filterVM.BrojKopijaDo, Drzava = filterVM.Drzava })
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Igra</th>
+            <th>Broj kopija</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ProdajaVM p in Model)
+        {
+            <tr>
+                <td>@p.NazivIgre</td>
+                <td>@p.BrojKopija</td>
+                <td>@Html.ActionLink("Detalji", "SalesInfo", "Developer", new { igraID = p.IgraID, DatumOd = filterVM.DatumOd, DatumDo = filterVM.DatumDo, BrojKopijaOd = filterVM.BrojKopijaOd, BrojKopijaDo = filterVM.BrojKopijaDo, Drzava = filterVM.Drzava }, new { htmlattributes = new { @class = "btn btn-primary" } })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/jsAjax.js"></script>

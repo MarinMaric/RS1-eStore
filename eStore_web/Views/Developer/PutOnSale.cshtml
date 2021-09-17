@@ -1,0 +1,54 @@
+﻿@using eStore_web.ViewModel;
+@model PopustVM
+
+<head>
+    <style>
+        .mInput {
+            margin: auto;
+            width: 300px;
+            padding: 10px;
+            background-color: #eee;
+            border: 2px solid #939393;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<h1>Stvori popust za: @Model.Naziv</h1>
+
+<br />
+
+@using (Html.BeginForm("CreateDiscount", "Developer", new { }, FormMethod.Post, true, new { @class = "form-horizontal" }))
+{
+    @Html.HiddenFor(x => x.IgraID)
+    @Html.HiddenFor(x => x.Naziv)
+    <fieldset>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(x => x.Postotak, "Postotak", new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.EditorFor(x => x.Postotak, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(x => x.Postotak, "Popust mora biti u rasponu od 5% do 100%", new { htmlAttributes = new { @class = "text-danger" } })*@
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(x => x.DatumPocetka, "Datum početka", new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.EditorFor(x => x.DatumPocetka, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(x => x.DatumPocetka, "Datum nije valjan", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(x => x.BrojDana, "Trajanje popousta (broj dana)", new { @class = "col-md-4 control-label" })
+            <div class="col-md-4">
+                @Html.EditorFor(x => x.BrojDana, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(x => x.BrojDana, "Akcija mora trajati od 1 do 30 dana", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <br />
+        <input type="submit" value="Stvori popust" class="btn btn-primary" />
+    </fieldset>
+}
