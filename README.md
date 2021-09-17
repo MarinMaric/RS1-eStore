@@ -18,11 +18,7 @@ For testing purposes all accounts have the same password: 14E5X_0V3y
 
 .NET Core
 
-Xamarin
-
 Angular
-
-WinForms
 
 Entity Framework
 
