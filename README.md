@@ -6,7 +6,7 @@ Web app for selling and buying video games that consists of three modules:
 - Developer (registers a business account and uploads their game under permission of an administrator)
 - Administrator (works with developers to approve their game publish requests and solves customer problems)
 
-#Login info
+# Login info
 
 Customer: MarinKupac
 Developer: MarinStudio
