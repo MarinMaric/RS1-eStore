@@ -11,7 +11,9 @@ Web app for selling and buying video games that consists of three modules:
 # Login info
 
 Customer: MarinKupac
+
 Developer: MarinStudio
+
 Administrator: MarinAdmin
 
 For testing purposes all accounts have the same password: 14E5X_0V3y
