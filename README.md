@@ -1,5 +1,7 @@
 # RS1-eStore
 
+![image](https://user-images.githubusercontent.com/45796438/133768689-2cbc55bb-a497-476a-be4c-9692d740d180.png)
+
 Web app for selling and buying video games that consists of three modules:
 
 - Customer (registers and buys games online)
