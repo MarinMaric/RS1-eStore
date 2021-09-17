@@ -17,12 +17,19 @@ For testing purposes all accounts have the same password: 14E5X_0V3y
 # Web app uses
 
 .NET Core
+
 Xamarin
+
 Angular
+
 WinForms
+
 Entity Framework
+
 SignalR
+
 Worker Services
+
 RDLC Reporting
 
 # Additional info
