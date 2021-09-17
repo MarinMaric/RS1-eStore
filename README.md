@@ -30,6 +30,8 @@ Worker Services
 
 RDLC Reporting
 
+![image](https://user-images.githubusercontent.com/45796438/133768889-b1eebc01-c9d9-4f64-a256-057e87a4395b.png)
+
 # Additional info
 
 Rudimentary Angular front-end for the developer module can be found in a separate repository [here](https://github.com/MarinMaric/RS1Angular)
