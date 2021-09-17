@@ -14,5 +14,23 @@ Administrator: MarinAdmin
 
 For testing purposes all accounts have the same password: 14E5X_0V3y
 
+# Web app uses
+
+.NET Core
+Xamarin
+Angular
+WinForms
+Entity Framework
+SignalR
+Worker Services
+RDLC Reporting
+
+# Additional info
+
+Rudimentary Angular front-end for the developer module can be found in a separate repository [here](https://github.com/MarinMaric/RS1Angular)
+
+Database needs to be created locally and the connection string modified in order to run it. Apply the migrations before starting the app.
+
+
 Web app was made as a project for my university with a pair of colleagues. All functionalities related to the developer module made by me.
 
